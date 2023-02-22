@@ -25,11 +25,15 @@ def get_location():
 
 def get_weather_forecast(location, key):
     """Retrieve API response data and catch errors."""
-
-    query = {'q': 'minneapolis', 'units': 'imperial', 'appid': key}
-    response = requests.get(weather_forecast_url, params=query)
-    
-    data = response.json()
+    try:
+        query = {'q': 'minneapolis', 'units': 'imperial', 'appid': key}
+        response = requests.get(weather_forecast_url, params=query)
+        response.raise_for_status()
+        data = response.json()
+        return data, None
+    except Exception as e:
+        print(e) # TODO switch to log instead of print
+        return None, e
 
 if __name__ == '__main__':
     main()
