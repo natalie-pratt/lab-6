@@ -2,11 +2,18 @@ import requests
 import os
 
 key = os.environ.get('WEATHER_KEY')
-
 weather_forecast_url = f'http://api.openweathermap.org/data/2.5/forecast'
 
 def main():
-    """"""
+    """Calls functions and holds main code to be run
+    at beginning of program"""
+
+    location = get_location() # Get location from function
+    weather_data, error = get_weather_forecast(location, key)
+
+    if error:
+        display_message('Sorry, could not retrieve weather data.') # TODO - add display message function to format print statements
+    else:
 
 def get_location():
     """Get location input from user to determine where
@@ -37,6 +44,7 @@ def get_weather_forecast(location, key):
     except Exception as e:
         print(e) # TODO switch to log instead of print
         return None, e # Returns None because the data was not successfully retrieved, and returns error
+
 
 if __name__ == '__main__':
     main()
