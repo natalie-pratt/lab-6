@@ -49,6 +49,21 @@ def get_weather_data(location, key):
         return None, e # Returns None because the data was not successfully retrieved, and returns error
 
 
+def get_weather_forecast(data):
+    """Get list of forecasts from response data
+        to be looped over and displayed to user"""
+
+    list_of_forecasts = data['list']
+
+    for forecast in list_of_forecasts:
+        timestamp = forecast['dt']
+        forecast_date = datetime.fromtimestamp(timestamp)
+        temp = forecast['main']['temp']
+        wind_speed = forecast['wind']['speed']
+        display_message(f'At {forecast_date} the temperature will be {temp}F, and the wind speed will be {wind_speed}mph.')
+
+
+
 def display_message(msg):
     print(f'\n{msg}')
 
