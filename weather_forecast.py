@@ -26,7 +26,7 @@ def get_location():
 def get_weather_forecast(location, key):
     """Retrieve API response data and catch errors."""
     try:
-        query = {'q': 'minneapolis', 'units': 'imperial', 'appid': key}
+        query = {'q': location, 'units': 'imperial', 'appid': key}
         response = requests.get(weather_forecast_url, params=query)
         response.raise_for_status()
         data = response.json()
