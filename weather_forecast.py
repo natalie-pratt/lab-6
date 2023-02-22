@@ -26,15 +26,17 @@ def get_location():
 
 def get_weather_forecast(location, key):
     """Retrieve API response data and catch errors."""
+    
     try:
-        query = {'q': location, 'units': 'imperial', 'appid': key}
-        response = requests.get(weather_forecast_url, params=query)
-        response.raise_for_status()
-        data = response.json()
-        return data, None
+        query = {'q': location, 'units': 'imperial', 'appid': key} # Query paramaters (location of forecast, temp units, and API key) to be added to URL/API call
+        response = requests.get(weather_forecast_url, params=query) # Request response and add query paramaters
+        response.raise_for_status() # If error codes between 400-599 (client/server) are thrown, this will raise an exception
+        data = response.json() 
+        return data, None # Returns data if successful, and returns None because there was no error
+
     except Exception as e:
         print(e) # TODO switch to log instead of print
-        return None, e
+        return None, e # Returns None because the data was not successfully retrieved, and returns error
 
 if __name__ == '__main__':
     main()
