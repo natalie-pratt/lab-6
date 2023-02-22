@@ -9,11 +9,14 @@ def main():
     at beginning of program"""
 
     location = get_location() # Get location from function
-    weather_data, error = get_weather_forecast(location, key)
+    weather_data, error = get_weather_data(location, key)
 
     if error:
         display_message('Sorry, could not retrieve weather data.') # TODO - add display message function to format print statements
     else:
+        '' # PLACEHOLDER
+        # TODO - add function call to get weather data
+
 
 def get_location():
     """Get location input from user to determine where
@@ -31,7 +34,7 @@ def get_location():
     return location
         
 
-def get_weather_forecast(location, key):
+def get_weather_data(location, key):
     """Retrieve API response data and catch errors."""
     
     try:
