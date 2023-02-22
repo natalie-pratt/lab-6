@@ -49,5 +49,9 @@ def get_weather_data(location, key):
         return None, e # Returns None because the data was not successfully retrieved, and returns error
 
 
+def display_message(msg):
+    print(f'\n{msg}')
+
+
 if __name__ == '__main__':
     main()
