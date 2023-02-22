@@ -11,15 +11,16 @@ def main():
 def get_location():
     """Get location input from user to determine where
     forecast should be retrieved from"""
+
     city, country = '', ''
 
-    while len(city) == 0:
-        city = input('Enter the name of the city').strip()
+    while len(city) == 0: # Loop through until user enters a valid city (in this case, valid just means not null)
+        city = input('Enter the name of the city: ').strip() # .strip() to remove leading and trailing spaces from string
     
-    while len(country) != 2 or not country.isalpha():
+    while len(country) != 2 or not country.isalpha(): # Loop through until user enters a valid country code. Must be 2 characters and alphabetical 
         country = input('Enter the 2-letter country code: ').strip()
 
-    location = f'{city}, {country}'
+    location = f'{city}, {country}' # Set location values as user answers and return
     return location
         
 
