@@ -23,11 +23,13 @@ def get_location():
     return location
         
 
-def get_weather_forecast():
+def get_weather_forecast(location, key):
     """Retrieve API response data and catch errors."""
+
     query = {'q': 'minneapolis', 'units': 'imperial', 'appid': key}
-    response = requests.get(weather_forecast_url)
+    response = requests.get(weather_forecast_url, params=query)
     
+    data = response.json()
 
 if __name__ == '__main__':
     main()
