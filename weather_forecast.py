@@ -15,8 +15,7 @@ def main():
     if error:
         display_message('Sorry, could not retrieve weather data.') # TODO - add display message function to format print statements
     else:
-        '' # PLACEHOLDER
-        # TODO - add function call to get weather data
+        get_weather_forecast(weather_data)
 
 
 def get_location():
@@ -61,6 +60,7 @@ def get_weather_forecast(data):
         forecast_date = datetime.fromtimestamp(timestamp)
         temp = forecast['main']['temp']
         wind_speed = forecast['wind']['speed']
+        
         display_message(f'At {forecast_date} the temperature will be {temp}F, and the wind speed will be {wind_speed}mph.')
 
 
