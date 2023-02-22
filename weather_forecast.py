@@ -14,3 +14,5 @@ def get_weather_forecast(url, query):
     """Retrieve API response data and catch errors."""
     response = requests.get(weather_forecast_url)
     
+if __name__ == '__main__':
+    main()
