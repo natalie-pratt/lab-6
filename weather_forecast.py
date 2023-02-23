@@ -56,12 +56,16 @@ def get_weather_forecast(data):
     list_of_forecasts = data['list']
 
     for forecast in list_of_forecasts:
+        date_format = '%d-%m-%Y %H:%M'
+
         timestamp = forecast['dt']
         forecast_date = datetime.fromtimestamp(timestamp)
+        formatted_forecast_date = forecast_date.strftime(date_format)
+
         temp = forecast['main']['temp']
         wind_speed = forecast['wind']['speed']
-        
-        display_message(f'At {forecast_date} the temperature will be {temp}F, and the wind speed will be {wind_speed}mph.')
+
+        display_message(f'At {formatted_forecast_date} the temperature will be {temp}F, and the wind speed will be {wind_speed}mph.')
 
 
 
