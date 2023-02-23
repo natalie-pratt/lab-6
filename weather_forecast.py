@@ -73,7 +73,7 @@ def display_formatted_weather_forecast(date, temp, wind_speed):
 
 
 def display_message(msg):
-    print(f'\n{msg}')
+    print(f'\n{msg}\n')
 
 
 if __name__ == '__main__':
