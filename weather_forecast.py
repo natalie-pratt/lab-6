@@ -55,6 +55,8 @@ def get_weather_forecast(data):
 
     list_of_forecasts = data['list']
 
+    display_message('*** Forecast in 3 hour increments for the next 5 days ***')
+
     for forecast in list_of_forecasts:
         date_format = '%d-%m-%Y %H:%M'
 
