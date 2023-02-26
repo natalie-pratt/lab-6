@@ -58,11 +58,11 @@ def get_weather_forecast(data):
     display_message('*** Forecast in 3 hour increments for the next 5 days ***')
 
     for forecast in list_of_forecasts:
-        date_format = '%d-%m-%Y %H:%M'
-
+        date_format = '%d-%m-%Y %H:%M' # Using UTC time - decided this because weather forecast can be found for anywhere in the world
+                                        # and having local time wouldn't make very much sense for somewhere in the world not using the same time
         timestamp = forecast['dt']
-        forecast_date = datetime.fromtimestamp(timestamp)
-        formatted_forecast_date = forecast_date.strftime(date_format)
+        forecast_date = datetime.utcfromtimestamp(timestamp) # Convert timestamp into UTC datetime
+        formatted_forecast_date = forecast_date.strftime(date_format) # Format date into previously stated format
 
         temp = forecast['main']['temp']
         wind_speed = forecast['wind']['speed']
@@ -71,7 +71,7 @@ def get_weather_forecast(data):
 
 
 def display_formatted_weather_forecast(date, temp, wind_speed):
-    print(f'\nDate & Time: {date}\nTemperature: {temp}\nWind speed: {wind_speed}')
+    print(f'\nDate & Time (UTC): {date}\nTemperature: {temp}\nWind speed: {wind_speed}')
 
 
 def display_message(msg):
