@@ -1,0 +1,1 @@
+2023-02-26 17:50:35,026 | ERROR | 404 Client Error: Not Found for url: http://api.openweathermap.org/data/2.5/forecas?q=alskfj%2C+us&units=imperial&appid=4c09bf82e877cc3ed2db39756ac03ebd

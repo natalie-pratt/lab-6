@@ -1,16 +1,29 @@
 import requests
 import os
 from datetime import datetime
+import logging
 
 key = os.environ.get('WEATHER_KEY')
 weather_forecast_url = f'http://api.openweathermap.org/data/2.5/forecast'
+
+# Set up logger
+logger = logging.getLogger()
+logger.setLevel(logging.ERROR) # Set level to error - for instance, 404 when requesting from API
+log_formatter = logging.Formatter('%(asctime)s | %(levelname)s | %(message)s') # Format log entries
+
+log_file_handler = logging.FileHandler('logs.log') # File handler to write to log file
+log_file_handler.setLevel(logging.ERROR) # Set level to ERROR
+log_file_handler.setFormatter(log_formatter) # Format log using formatter created previously
+
+logger.addHandler(log_file_handler) # Add the handler 
+
 
 def main():
     """Calls functions and holds main code to be run
     at beginning of program"""
 
     location = get_location() # Get location from function
-    weather_data, error = get_weather_data(location, key)
+    weather_data, error = get_weather_data(location, key) # Tuple will either consist of data, and None; or None, and error. Depending on whether there is an error.
 
     if error:
         display_message('Sorry, could not retrieve weather data.') 
@@ -45,7 +58,7 @@ def get_weather_data(location, key):
         return data, None # Returns data if successful, and returns None because there was no error
 
     except Exception as e:
-        print(e) # TODO switch to log instead of print
+        logging.error(e)
         return None, e # Returns None because the data was not successfully retrieved, and returns error
 
 
